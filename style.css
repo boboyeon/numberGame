@@ -53,6 +53,16 @@ h1 {
     top: -10px;
     left: -100px;
 }
+
+#result_area {
+    margin: 10px;
+    font-family: 'Cafe24Meongi-W-v1.0';
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #FFF;
+}
+
+
 .input_area {
     width: 100%;
     height: 50px;

@@ -12,33 +12,80 @@ let computerNum = 0;
 let playButton = document.getElementById("play_button");
 let userInput = document.getElementById("user_input");
 let resultArea = document.getElementById("result_area");
+let resetButton = document.getElementById("reset_button");
+let chances = 3;
+let gameOver = false;
+let chanceArea = document.getElementById("chance_area");
+let history = [];
+let answerArea = document.getElementById("answer_area");
 // document(website) 에서 Id를 선택한다
 // getElementByClassName, qeurySelector: id, class 태그 등 다양한 방식으로 선택
-playButton.addEventListener("click",play)
+playButton.addEventListener("click", play);
+resetButton.addEventListener("click", reset);
+userInput.addEventListener("focus", function () {
+  userInput.value = ""; // 익명의 함수 사용 - 이번만 일회성으로 사용하기때문에
+});
 // playButton에 이벤트 "click"을 넣어준다, play라는 함수를 실행해라
 // play 함수를 매개변수로 넣음 **
 // addEventListener(이벤트 이름, 이벤트 발생시 실행함수)
 // 이벤트 이름에 focus, mouseover 등등 들어갈수있음
 function pickRandomNum() {
-  computerNum = Math.floor(Math.random() * 100) + 1; 
+  computerNum = Math.floor(Math.random() * 100) + 1;
   // Math.random()는 0-1 사이의 숫자를 반환 (1은 포함이 안되는 1에 가까운 소수점으로 반환)
   // 1은 포함이 안되기 때문에 * 100 해도 0-99
   // 소수점을 1-100 사이의 숫자로 만들기 위해 * 100
   // +1을 하면 전체 범위가 0-99에서 1-100으로 변경
   // 소수점을 버리기 위해 Math.floor로 전체를 감싸줌
   console.log("정답", computerNum);
+  answerArea.textContent=`정답은 ${computerNum}번`
 }
 
-function play(){
-    let userValue = userInput.value
-    console.log(userValue);
-    if(userValue < computerNum){
-        resultArea.textContent = "Up!!"
-    }else if(userValue > computerNum){
-        resultArea.textContent = "Down~~"
-    }else {
-        resultArea.textContent = "정답입니다"
-    }
+function play() {
+  let userValue = userInput.value;
+
+  if (userValue < 1 || userValue > 100) {
+    resultArea.textContent = "1과 100 사이의 숫자를 입력해주세요";
+    return; // 함수를 끝냄, chances -- 가 작동하지 않아 횟수차감안됨
+  }
+  // 유저 값 유효성 검사 1
+  if (history.includes(userValue)) {
+    resultArea.textContent = "이미 입력한 숫자입니다. 다른 숫자를 입력해주세요";
+    return;
+  }
+  // 유저 값 유효성 검사 2
+
+  chances--; // 남은 기회 차감
+  chanceArea.textContent = `남은기회는 ${chances}번`;
+  // 동적인 값과 정적인 값을 같이 쓰는 방식 `` (중요중요)
+  console.log("chance", chances);
+
+  if (userValue < computerNum) {
+    resultArea.textContent = "Up!!";
+  } else if (userValue > computerNum) {
+    resultArea.textContent = "Down~~";
+  } else {
+    resultArea.textContent = "정답입니다";
+    gameOver=true;
+  }
+
+  history.push(userValue);
+  console.log(history);
+
+  if (chances < 1) {
+    gameOver = true;
+  }
+  if (gameOver == true) {
+    playButton.disabled = true;
+  }
+}
+
+function reset() {
+  // user input창이 깨끗하게 정리
+  userInput.value = "";
+  // 새로운 번호가 생성
+  pickRandomNum();
+  resultArea.textContent = "결과값이 여기 나옵니다";
+  playButton.disabled = false;
 }
 
 pickRandomNum();

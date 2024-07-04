@@ -155,4 +155,33 @@ input {
         transform: translate(-50%,-50%);
         text-align: center;
     }
+
+    #answer_area {
+        top: 10%;
+        right: 7%;
+    }
+
+    #result_area {
+        margin: 10px;
+        font-family: 'Cafe24Meongi-W-v1.0', 'LeeSeoyun';
+        font-size: 2rem;
+        font-weight: bold;
+        color: #FFF;
+    }
+
+    .button_area {
+        margin: 20px;
+    }
+
+    #play_button {
+        font-size: 3rem;
+        width: 120px;
+        height: 60px;
+    }
+    
+    #reset_button {
+        font-size: 3rem;
+        width: 180px;
+        height: 60px;
+    }
 }

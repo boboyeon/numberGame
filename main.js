@@ -79,10 +79,11 @@ function play() {
 
   if (chances < 1) {
     gameOver = true;
-  }
-  if (gameOver == true) {
     playButton.disabled = true;
   }
+  // if (gameOver) {
+  //   playButton.disabled = true;
+  // }
   userInput.value = '';
 }
 

@@ -25,6 +25,12 @@ resetButton.addEventListener("click", reset);
 userInput.addEventListener("focus", function () {
   userInput.value = ""; // 익명의 함수 사용 - 이번만 일회성으로 사용하기때문에
 });
+userInput.addEventListener("keydown", function(event) {
+  if (event.key === 'Enter') {
+    play(); // "Enter" 키를 눌렀을 때 처리할 함수 호출
+  }
+}); // "Enter"키로 입력하는 기능
+
 // playButton에 이벤트 "click"을 넣어준다, play라는 함수를 실행해라
 // play 함수를 매개변수로 넣음 **
 // addEventListener(이벤트 이름, 이벤트 발생시 실행함수)
@@ -77,6 +83,7 @@ function play() {
   if (gameOver == true) {
     playButton.disabled = true;
   }
+  userInput.value = '';
 }
 
 function reset() {

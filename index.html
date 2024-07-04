@@ -1,30 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>boyeon's number game</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <div id="wrap">
-        <div class="game">
+      <div class="game">
         <h1>number Guess game!</h1>
-        <div id="result_img">
-            <img src="img/papa_answerme.png" alt="정답을알려줘이미지">
+        <div id="answer_position">
+            <div id="result_img">
+            <img src="img/papa_answerme.png" alt="정답을알려줘이미지" />
+          </div>
+          <div id="answer_area" class="hint">
+           hint!
         </div>
-        <div id="result_area"></div>
-        <div id="chance_area">남은 기회는 3번입니다</div>
+        </div>
+        <div id="result_area">
+            <!-- 입력 결과 출력 -->
+        </div>
+        <div id="chance_area">
+            남은 기회는 3번입니다
+        </div>
         <div class="input_area">
-            <input type="number" id="user_input">
+          <input type="number" id="user_input" />
         </div>
         <div class="button_area">
-            <button id="play_button">Go!</button>
-        <button id="reset_button">reset</button>
+          <button id="play_button">
+            Go!
+        </button>
+          <button id="reset_button">
+            reset
+        </button>
         </div>
-        <div id="answer_area">정답 : </div>
-    </div>
+      </div>
     </div>
     <script src="main.js"></script>
-</body>
+  </body>
 </html>

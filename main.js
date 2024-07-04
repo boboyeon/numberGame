@@ -37,7 +37,7 @@ function pickRandomNum() {
   // +1을 하면 전체 범위가 0-99에서 1-100으로 변경
   // 소수점을 버리기 위해 Math.floor로 전체를 감싸줌
   console.log("정답", computerNum);
-  answerArea.textContent=`정답은 ${computerNum}번`
+  answerArea.textContent = `정답은 ${computerNum}번`;
 }
 
 function play() {
@@ -65,7 +65,7 @@ function play() {
     resultArea.textContent = "Down~~";
   } else {
     resultArea.textContent = "정답입니다";
-    gameOver=true;
+    gameOver = true;
   }
 
   history.push(userValue);
@@ -80,12 +80,14 @@ function play() {
 }
 
 function reset() {
-  // user input창이 깨끗하게 정리
-  userInput.value = "";
-  // 새로운 번호가 생성
-  pickRandomNum();
-  resultArea.textContent = "결과값이 여기 나옵니다";
-  playButton.disabled = false;
+  userInput.value = ""; // user input창이 깨끗하게 정리
+  pickRandomNum(); // 새로운 번호가 생성
+  resultArea.textContent = "retry!";
+  playButton.disabled = false; 
+  history = []; // 입력한 숫자 기록 초기화
+  chances = 3; // 기회 초기화
+  chanceArea.textContent = `남은 기회는 ${chances}번 입니다`
 }
+
 
 pickRandomNum();

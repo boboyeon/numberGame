@@ -3,6 +3,15 @@
     src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2405-3@1.1/Cafe24Meongi-W-v1.0.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
+    unicode-range: U+0020-007F; /* ASCII 범위: 기본 영어 문자에 적용 */
+}
+
+@font-face {
+    font-family: 'LeeSeoyun';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2202-2@1.0/LeeSeoyun.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    unicode-range: U+1100-11FF, U+AC00-D7AF; /* 한글 자모, 한글 음절에 적용 */
 }
 
 * {
@@ -19,7 +28,7 @@
 
 .game {
     width: 50%;
-    height: 80%;
+    height: 85%;
     border: 15px solid #fff;
     background-color: #0001;
     border-radius: 50px;
@@ -42,7 +51,7 @@ h1 {
     height: 220px;
     margin: 20px auto;
     border-radius: 100%;
-    border: 10px solid #fff3;
+    border: 10px solid #fff4;
     position: relative;
     overflow: hidden;
 }
@@ -54,14 +63,47 @@ h1 {
     left: -100px;
 }
 
+#answer_position {
+    position: relative;
+}
+
+#answer_area {
+    font-family:  'LeeSeoyun';
+    position: absolute;
+    top: 50%;
+    right: 20%;
+    transition: all 0.3s;
+    text-align: center;
+}
+
+#answer_area::before {
+    content: 'hint!';
+    position: absolute;
+    background-color: #fff;
+    width: 6em;
+    top: -38%;
+    left:-20%;
+    line-height: 2em;
+    border-radius: 30px;
+    border: 5px solid #9993;
+}
+
+#answer_area:hover::before {
+    opacity: 0;
+    transition: all 0.3s;
+}
+
 #result_area {
     margin: 10px;
-    font-family: 'Cafe24Meongi-W-v1.0';
+    font-family: 'Cafe24Meongi-W-v1.0', 'LeeSeoyun';
     font-size: 2.5rem;
     font-weight: bold;
     color: #FFF;
 }
 
+#chance_area {
+    font-family: 'LeeSeoyun';
+}
 
 .input_area {
     width: 100%;
@@ -74,7 +116,7 @@ input {
 }
 
 .button_area {
-    margin: 20px;
+    margin: 30px;
 }
 
 #play_button {
